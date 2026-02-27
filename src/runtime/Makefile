@@ -150,7 +150,8 @@ comp_all comp_all_uniconc: update_rev
 
 rt.a: ../../rt/lib/libucommon.a ../../rt/lib/libgdbm.a ../../rt/lib/libtp.a ../../rt/lib/libuconsole.a $(COBJS)
 	$(CMNT) @echo [ICONC RTT] "-A -O ... # rt.a: "
-	$(RTT) $(DASHS) -A -O  "$(COBJS) f_*.$(O) o_*$(O)"
+	$(RTT) $(DASHS) -A -O  "$(COBJS)"
+	ar q rt.a f_*.$(O) o_*$(O)
 	$(RANLIB) $@
 	$(CP) rt.a ../common/dlrgint.$(O) ../../rt/lib/
 	$(CP) rt.db ../../rt/lib/
