@@ -243,6 +243,9 @@ Deliberate Syntax Error
 #if UNIX || NTGCC
 
    buf = growcat(buf, &buflen, 3, c_comp, " ", c_opts);
+#if UNIX
+   buf = growcat(buf, &buflen, 1, " -std=c11");
+#endif
 
 #ifdef MacOS
    buf = growcat(buf, &buflen, 1," -Wno-parentheses-equality");
@@ -260,6 +263,8 @@ Deliberate Syntax Error
 #ifdef MacOS
    buf = growcat(buf, &buflen, 1,
          " -I/usr/X11/include  -I/usr/X11 -I/usr/X11/include/freetype2 -L/usr/X11/lib");
+#elif UNIX
+   buf = growcat(buf, &buflen, 1, " -I/usr/include/freetype2");
 #endif
 #endif                                  /* Graphics */
 
